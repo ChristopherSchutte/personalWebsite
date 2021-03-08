@@ -48,7 +48,14 @@
 </head>
 
 <body>
-    <canvas style="padding: 5%;" id="myChart" width="400" height="400"></canvas>
+    <div class="container" style="padding-top: 3%;">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h1>My dogs mood as a percentage of a day</h1>
+            </div>
+        </div>
+    </div>
+    <canvas style="padding: 5%;" id="myChart" width="300" height="300"></canvas>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -58,27 +65,21 @@
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
-            labels: ['Red', 'Blue', 'A word', 'Green', 'Null', 'Orange'],
+            labels: ['Asleep', 'Needy', 'Sleepy',],
             datasets: [{
-                label: 'A fun chart!',
-                data: [-5, 19, 'uh oh', 5, null, 3],
+                label: 'My dogs mood throughout the day',
+                data: [0.55, 0.30, 0.15],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
                 ],
                 borderWidth: 1
             }]
