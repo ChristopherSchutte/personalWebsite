@@ -51,35 +51,96 @@
     <div class="container" style="padding-top: 3%;">
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
-                <h1>My dogs mood as a percentage of a day</h1>
+              <h1>Municipal zoning makeup of a certain area V1</h1>
+            </div>
+          </div>
+      </div>
+
+        <div class="row justify-content-md-center">
+          <canvas id="chartV1" width="300" height="300"></canvas>
+        </div>
+
+      <div class="container" style="padding-top: 3%;">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+              <h1>Municipal zoning makeup of a certain area V2</h1>
             </div>
         </div>
-    </div>
-    <canvas style="padding: 5%;" id="myChart" width="300" height="300"></canvas>
+      </div>
+
+        <div class="row justify-content-md-center">
+          <div style="padding-left: 10%; padding-right: 10%; padding-top: 4%;">
+            <canvas id="chartV2" width="300" height="300"></canvas>
+          </div>
+        </div>
+        
+      <div class="container" style="padding-top: 3%;">
+        <div class="row justify-content-md-left">
+            <div class="col-md-auto">
+              <h4>Change Log: Changed chart style, edited colors, put chart in container, added padding,
+                and edited border thickness </h4>
+            </div>
+        </div>
+      </div>
+
+      <div class="container" style="padding-top: 3%;">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+              <h1>Municipal zoning makeup of a certain area V3</h1>
+            </div>
+          </div>
+      </div>
+
+        <div class="row justify-content-md-center">
+          <div style="padding-left: 10%; padding-right: 10%; padding-top: 4%;">
+            <canvas id="chartV3" width="300" height="300"></canvas>
+          </div>
+        </div>
+
+        <div class="container" style="padding-top: 3%;">
+          <div class="row justify-content-md-left">
+              <div class="col-md-auto">
+                <h4>Change Log: Added hover colors, hover changes border color now too, added modified
+                  percentages on hover too </h4>
+              </div>
+          </div>
+        </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
 
 <!--Chart.js stuff-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
+  
+  var chartData = [0.111496, 0.192106, 0.000008, 0.068784, 0.010063, 0.617543];
+  var chartLabels = ['Commercial Mixed Use', 'Industrial', 'O-1', 'Open Space', 'PUD', 'Residential'];
+
+  //V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 V1 
+    var ctx = document.getElementById('chartV1').getContext('2d');
+    var chartV1 = new Chart(ctx, {
+        type: 'bar',
         data: {
-            labels: ['Asleep', 'Needy', 'Sleepy',],
+            labels: chartLabels,
             datasets: [{
-                label: 'My dogs mood throughout the day',
-                data: [0.55, 0.30, 0.15],
+                label: 'Municipal zoning makeup of a certain area',
+                data: chartData,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(1, 22, 39, 0.2)', //blue grey
+                    'rgba(154, 3, 30, 0.2)', //red
+                    'rgba(71, 74, 44, 0.2)', //brown green
+                    'rgba(81, 158, 138, 0.2)', //greenish teal
+                    'rgba(236, 164, 0, 0.2)', //yellow
+                    'rgba(240, 101, 67, 0.2)', //salmon
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    'rgba(1, 22, 39, 1)', //blue grey
+                    'rgba(154, 3, 30, 1)', //red
+                    'rgba(71, 74, 44, 1)', //brown green
+                    'rgba(81, 158, 138, 1)', //greenish teal
+                    'rgba(236, 164, 0, 1)', //yellow
+                    'rgba(240, 101, 67, 1)', //salmon
                 ],
                 borderWidth: 1
             }]
@@ -93,6 +154,87 @@
                 }]
             }
         }
+    });
+
+    //V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 V2 
+    var ctx = document.getElementById('chartV2').getContext('2d');
+    var chartV2 = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Municipal zoning makeup of a certain area',
+                data: chartData,
+                backgroundColor: [
+                    'rgba(21, 30, 63, 0.4)', //dark blue[commercial]
+                    'rgba(230, 175, 46, 0.4)', //yellow[industrial]
+                    'rgba(76, 46, 5, 0.4)', //brown[O-1]
+                    'rgba(13, 93, 86, 0.4)', //teal[open space]
+                    'rgba(244, 96, 54, 0.4)', //orangeish[PUD]
+                    'rgba(231, 29, 54, 0.4)', //redish[residential]
+                ],
+                borderColor: [
+                    'rgba(21, 30, 63, 1)', //dark blue[commercial]
+                    'rgba(230, 175, 46, 1)', //yellow[industrial]
+                    'rgba(76, 46, 5, 1)', //brown[O-1]
+                    'rgba(13, 93, 86, 1)', //teal[open space]
+                    'rgba(244, 96, 54, 1)', //orangeish[PUD]
+                    'rgba(231, 29, 54, 1)', //redish[residential]
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+        }
+    });
+
+    //V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 V3 
+    var ctx = document.getElementById('chartV3').getContext('2d');
+    var chartV3 = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Municipal zoning makeup of a certain area',
+                data: chartData,
+                backgroundColor: [
+                    'rgba(21, 30, 63, 0.2)', //dark blue[commercial]
+                    'rgba(230, 175, 46, 0.2)', //yellow[industrial]
+                    'rgba(76, 46, 5, 0.2)', //brown[O-1]
+                    'rgba(13, 93, 86, 0.2)', //teal[open space]
+                    'rgba(244, 96, 54, 0.2)', //orangeish[PUD]
+                    'rgba(231, 29, 54, 0.2)', //redish[residential]
+                ],
+                borderColor: [
+                    'rgba(21, 30, 63, 1)', //dark blue[commercial]
+                    'rgba(230, 175, 46, 1)', //yellow[industrial]
+                    'rgba(76, 46, 5, 1)', //brown[O-1]
+                    'rgba(13, 93, 86, 1)', //teal[open space]
+                    'rgba(244, 96, 54, 1)', //orangeish[PUD]
+                    'rgba(231, 29, 54, 1)', //redish[residential]
+                ],
+                hoverBackgroundColor: [
+                    'rgba(21, 30, 63, 0.5)', //dark blue[commercial]
+                    'rgba(230, 175, 46, 0.5)', //yellow[industrial]
+                    'rgba(76, 46, 5, 0.5)', //brown[O-1]
+                    'rgba(13, 93, 86, 0.5)', //teal[open space]
+                    'rgba(244, 96, 54, 0.5)', //orangeish[PUD]
+                    'rgba(231, 29, 54, 0.5)', //redish[residential]
+                ],
+                borderWidth: 1,
+                hoverBorderWidth: 2.5,
+                hoverOffset: 5
+            }]
+        },
+        options: {
+        tooltips: {
+            callbacks: {
+                    label: function(tooltipItem, chartData) {
+                      return Math.round(chartData['datasets'][0]['data'][tooltipItem['index']]*100) + '%';
+                }
+            }
+        }
+    }
     });
     </script>
 </html>
