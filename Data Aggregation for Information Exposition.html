@@ -14259,31 +14259,14 @@ a.anchor-link {
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">json</span> <span class="k">as</span> <span class="nn">jsn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bellaCSVMaker</span><span class="p">(</span><span class="n">Filename</span><span class="p">,</span> <span class="n">ZoneLoc</span><span class="p">,</span> <span class="n">AreaLoc</span><span class="p">):</span>
-    <span class="n">Dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Filename</span><span class="p">)</span>
-    <span class="n">dfEdit</span> <span class="o">=</span> <span class="n">Dataframe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="n">ZoneLoc</span><span class="p">,</span><span class="n">AreaLoc</span><span class="p">]]</span>
-    <span class="n">dfGroup</span> <span class="o">=</span> <span class="n">dfEdit</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ZONE_DIST_TYPE&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">dfGroup</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">defaultdict</span>
 </pre></div>
 
      </div>
@@ -14294,11 +14277,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">aggData</span> <span class="o">=</span> <span class="n">bellaCSVMaker</span><span class="p">(</span><span class="s2">&quot;bellasFile.csv&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">aggData</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">popoDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;denver-1.nov.csv&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">popoDF</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14337,40 +14320,213 @@ a.anchor-link {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>SHAPE_Area</th>
-    </tr>
-    <tr>
-      <th>ZONE_DIST_TYPE</th>
-      <th></th>
+      <th>raw_row_number</th>
+      <th>date</th>
+      <th>time</th>
+      <th>location</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>district</th>
+      <th>precinct</th>
+      <th>type</th>
+      <th>disposition</th>
+      <th>arrest_made</th>
+      <th>citation_issued</th>
+      <th>warning_issued</th>
+      <th>outcome</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Commercial Mixed Use</th>
-      <td>6.762923e-04</td>
+      <th>0</th>
+      <td>1</td>
+      <td>2012-11-13</td>
+      <td>00:02:22</td>
+      <td>8500 W CRESTLINE AVE</td>
+      <td>39.618329</td>
+      <td>-105.092691</td>
+      <td>4</td>
+      <td>423</td>
+      <td>vehicular</td>
+      <td>K - Street Check Completed</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>Industrial</th>
-      <td>1.165242e-03</td>
+      <th>1</th>
+      <td>16</td>
+      <td>2012-11-29</td>
+      <td>00:25:01</td>
+      <td>8500 W CRESTLINE AVE</td>
+      <td>39.618329</td>
+      <td>-105.092691</td>
+      <td>4</td>
+      <td>423</td>
+      <td>vehicular</td>
+      <td>Party Advised</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>O-1</th>
-      <td>5.020000e-08</td>
+      <th>2</th>
+      <td>72</td>
+      <td>2012-11-23</td>
+      <td>22:58:10</td>
+      <td>4830 S HOLLAND WAY</td>
+      <td>39.630666</td>
+      <td>-105.102551</td>
+      <td>4</td>
+      <td>423</td>
+      <td>vehicular</td>
+      <td>K - Street Check Completed</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>Open Space</th>
-      <td>4.172169e-04</td>
+      <th>3</th>
+      <td>121</td>
+      <td>2012-11-27</td>
+      <td>17:48:33</td>
+      <td>4885 S QUEBEC ST</td>
+      <td>39.626174</td>
+      <td>-104.904062</td>
+      <td>3</td>
+      <td>324</td>
+      <td>pedestrian</td>
+      <td>In Service</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>PUD</th>
-      <td>6.103540e-05</td>
+      <th>4</th>
+      <td>138</td>
+      <td>2012-11-14</td>
+      <td>23:46:58</td>
+      <td>W LAYTON AVE / S WADSWORTH BLVD</td>
+      <td>39.630150</td>
+      <td>-105.081693</td>
+      <td>4</td>
+      <td>423</td>
+      <td>vehicular</td>
+      <td>Party Advised</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>Residential</th>
-      <td>3.745782e-03</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6360</th>
+      <td>672025</td>
+      <td>2012-11-06</td>
+      <td>00:03:34</td>
+      <td>E 56TH AVE / N TOWER RD</td>
+      <td>39.798303</td>
+      <td>-104.772121</td>
+      <td>5</td>
+      <td>522</td>
+      <td>vehicular</td>
+      <td>T - Citation Issued</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>citation</td>
+    </tr>
+    <tr>
+      <th>6361</th>
+      <td>672116</td>
+      <td>2012-11-09</td>
+      <td>07:33:48</td>
+      <td>5300-BLK N PEORIA ST</td>
+      <td>39.792865</td>
+      <td>-104.847131</td>
+      <td>5</td>
+      <td>511</td>
+      <td>vehicular</td>
+      <td>Warning Issued</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>warning</td>
+    </tr>
+    <tr>
+      <th>6362</th>
+      <td>672283</td>
+      <td>2012-11-28</td>
+      <td>15:57:42</td>
+      <td>E RANDOLPH PL / N WORCHESTER ST</td>
+      <td>39.797568</td>
+      <td>-104.830744</td>
+      <td>5</td>
+      <td>521</td>
+      <td>vehicular</td>
+      <td>Party Advised</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6363</th>
+      <td>672463</td>
+      <td>2012-11-29</td>
+      <td>20:37:09</td>
+      <td>E 55TH AVE / E MAXWELL PL</td>
+      <td>39.794786</td>
+      <td>-104.749367</td>
+      <td>5</td>
+      <td>523</td>
+      <td>vehicular</td>
+      <td>Warning Issued</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>warning</td>
+    </tr>
+    <tr>
+      <th>6364</th>
+      <td>672589</td>
+      <td>2012-11-23</td>
+      <td>20:43:49</td>
+      <td>E 51ST AVE / N QUENTIN ST</td>
+      <td>39.789289</td>
+      <td>-104.844671</td>
+      <td>5</td>
+      <td>521</td>
+      <td>vehicular</td>
+      <td>Vehicle Towed,Warning Issued</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>warning</td>
     </tr>
   </tbody>
 </table>
+<p>6365 rows × 14 columns</p>
 </div>
 </div>
 
@@ -14383,11 +14539,16 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">aggData</span><span class="p">[</span><span class="s2">&quot;SHAPE_Area&quot;</span><span class="p">]</span> <span class="o">/=</span> <span class="n">aggData</span><span class="p">[</span><span class="s2">&quot;SHAPE_Area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">display</span><span class="p">(</span><span class="n">aggData</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataByPrecinct</span> <span class="o">=</span> <span class="n">popoDF</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;precinct&#39;</span><span class="p">,</span><span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;arrest_made&#39;</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">dataByPrecinct</span><span class="p">[</span><span class="s1">&#39;raw_row_number&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">dataByPrecinct</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">dataByPrecinct</span><span class="p">[</span><span class="s1">&#39;lng&#39;</span><span class="p">]</span>
+<span class="n">dataByPrecinct</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;arrest_made&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataByPrecinct</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dataByPrecinct</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14426,37 +14587,271 @@ a.anchor-link {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>SHAPE_Area</th>
-    </tr>
-    <tr>
-      <th>ZONE_DIST_TYPE</th>
-      <th></th>
+      <th>precinct</th>
+      <th>arrest_made</th>
+      <th>citation_issued</th>
+      <th>warning_issued</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Commercial Mixed Use</th>
-      <td>0.111496</td>
+      <th>0</th>
+      <td>223</td>
+      <td>78</td>
+      <td>60</td>
+      <td>46</td>
     </tr>
     <tr>
-      <th>Industrial</th>
-      <td>0.192106</td>
+      <th>1</th>
+      <td>211</td>
+      <td>65</td>
+      <td>24</td>
+      <td>19</td>
     </tr>
     <tr>
-      <th>O-1</th>
-      <td>0.000008</td>
+      <th>2</th>
+      <td>411</td>
+      <td>54</td>
+      <td>46</td>
+      <td>33</td>
     </tr>
     <tr>
-      <th>Open Space</th>
-      <td>0.068784</td>
+      <th>3</th>
+      <td>621</td>
+      <td>50</td>
+      <td>26</td>
+      <td>16</td>
     </tr>
     <tr>
-      <th>PUD</th>
-      <td>0.010063</td>
+      <th>4</th>
+      <td>311</td>
+      <td>49</td>
+      <td>49</td>
+      <td>42</td>
     </tr>
     <tr>
-      <th>Residential</th>
-      <td>0.617543</td>
+      <th>5</th>
+      <td>412</td>
+      <td>46</td>
+      <td>38</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>612</td>
+      <td>43</td>
+      <td>12</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>111</td>
+      <td>41</td>
+      <td>53</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>611</td>
+      <td>41</td>
+      <td>23</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>112</td>
+      <td>40</td>
+      <td>36</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>122</td>
+      <td>40</td>
+      <td>26</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>212</td>
+      <td>39</td>
+      <td>34</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>121</td>
+      <td>39</td>
+      <td>36</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>221</td>
+      <td>33</td>
+      <td>28</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>623</td>
+      <td>28</td>
+      <td>13</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>123</td>
+      <td>26</td>
+      <td>26</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>521</td>
+      <td>26</td>
+      <td>39</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>421</td>
+      <td>26</td>
+      <td>40</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>622</td>
+      <td>24</td>
+      <td>10</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>None</td>
+      <td>23</td>
+      <td>16</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>213</td>
+      <td>23</td>
+      <td>35</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>312</td>
+      <td>19</td>
+      <td>59</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>222</td>
+      <td>16</td>
+      <td>28</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>422</td>
+      <td>15</td>
+      <td>40</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>512</td>
+      <td>14</td>
+      <td>20</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>113</td>
+      <td>14</td>
+      <td>30</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>511</td>
+      <td>12</td>
+      <td>30</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>313</td>
+      <td>11</td>
+      <td>39</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>323</td>
+      <td>10</td>
+      <td>27</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>423</td>
+      <td>8</td>
+      <td>17</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>314</td>
+      <td>8</td>
+      <td>19</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>322</td>
+      <td>8</td>
+      <td>28</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>321</td>
+      <td>6</td>
+      <td>9</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>522</td>
+      <td>4</td>
+      <td>11</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>523</td>
+      <td>4</td>
+      <td>11</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>324</td>
+      <td>2</td>
+      <td>26</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>759</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -14472,11 +14867,11 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jsonForWeb</span> <span class="o">=</span> <span class="n">aggData</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">jsonForWeb</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">meanData</span> <span class="o">=</span> <span class="n">dataByPrecinct</span><span class="p">[[</span><span class="s1">&#39;arrest_made&#39;</span><span class="p">,</span><span class="s1">&#39;citation_issued&#39;</span><span class="p">,</span><span class="s1">&#39;warning_issued&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meanData</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14496,42 +14891,199 @@ a.anchor-link {
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>{&#34;SHAPE_Area&#34;:{&#34;Commercial Mixed Use&#34;:0.1114960201,&#34;Industrial&#34;:0.1921060545,&#34;O-1&#34;:0.0000082762,&#34;Open Space&#34;:0.0687839029,&#34;PUD&#34;:0.0100625191,&#34;Residential&#34;:0.6175432272}}
+<pre>arrest_made        26.621622
+citation_issued    28.783784
+warning_issued     19.783784
+dtype: float64
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>pandas.core.series.Series</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">popoJson</span> <span class="o">=</span> <span class="n">meanData</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;policeData2.0.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span> 
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">popoJson</span><span class="p">)</span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[89]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">policeDict</span> <span class="o">=</span> <span class="n">sortedArrests</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="c1">#separate dictionary i made for aggrigation</span>
+<span class="n">policeDict</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[89]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>{11: 78,
+ 6: 65,
+ 20: 54,
+ 32: 50,
+ 12: 49,
+ 21: 46,
+ 31: 43,
+ 0: 41,
+ 30: 41,
+ 1: 40,
+ 4: 40,
+ 3: 39,
+ 7: 39,
+ 9: 33,
+ 34: 28,
+ 27: 26,
+ 5: 26,
+ 22: 26,
+ 33: 24,
+ 8: 23,
+ 36: 23,
+ 13: 19,
+ 10: 16,
+ 23: 15,
+ 26: 14,
+ 2: 14,
+ 25: 12,
+ 14: 11,
+ 18: 10,
+ 15: 8,
+ 17: 8,
+ 24: 8,
+ 16: 6,
+ 28: 4,
+ 29: 4,
+ 19: 2,
+ 35: 0}</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[90]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">varianceCalculator</span><span class="p">(</span><span class="n">arry</span><span class="p">):</span> <span class="c1">#hard coded variance and mean just so show I know it</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">arry</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">arry</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
+        
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">arry</span><span class="p">)</span>
+    
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">arry</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="nb">pow</span><span class="p">((</span><span class="n">arry</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">arry</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean of the array is </span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="s2"> and the variance is </span><span class="si">{</span><span class="n">variance</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[91]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">varianceCalculator</span><span class="p">(</span><span class="n">policeDict</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>The mean of the array is 26.62162162162162 and the variance is 347.8568298027758
 </pre>
 </div>
 </div>
 
 </div>
 
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;dataForWebsite.json&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonFile</span><span class="p">:</span>
-      <span class="n">jsn</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">jsonForWeb</span><span class="p">,</span> <span class="n">jsonFile</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
 </div>
 
 </div>
