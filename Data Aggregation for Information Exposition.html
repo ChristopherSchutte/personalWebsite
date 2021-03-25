@@ -5,8 +5,49 @@
 
 <title>Data Aggregation for Information Exposition</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
+    <title>Christopher Schutte</title>
+    <link rel="shortcut icon" type="image/jpg" href="Favicon.png"/>
+
+    <nav class="navbar navbar-light" style="background-color: #93bba9;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Favicon.png" alt="favicon" width="30" height="30" class="d-inline-block align-top">
+                Christopher Schutte
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="resume.html">Resume</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="portfolio.html">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Information</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="redesign.html">Redesign</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="inspiration.html">Inspiration</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="chart.html">Chart JS</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
 <style type="text/css">
     pre { line-height: 125%; margin: 0; }
@@ -14259,7 +14300,7 @@ a.anchor-link {
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14277,7 +14318,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">popoDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;denver-1.nov.csv&quot;</span><span class="p">)</span>
@@ -14539,7 +14580,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataByPrecinct</span> <span class="o">=</span> <span class="n">popoDF</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;precinct&#39;</span><span class="p">,</span><span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;arrest_made&#39;</span><span class="p">)</span>
@@ -14867,7 +14908,45 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">complexjson</span> <span class="o">=</span> <span class="n">dataByPrecinct</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+<span class="n">complexjson</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&#39;{&#34;precinct&#34;:{&#34;0&#34;:&#34;223&#34;,&#34;1&#34;:&#34;211&#34;,&#34;2&#34;:&#34;411&#34;,&#34;3&#34;:&#34;621&#34;,&#34;4&#34;:&#34;311&#34;,&#34;5&#34;:&#34;412&#34;,&#34;6&#34;:&#34;612&#34;,&#34;7&#34;:&#34;111&#34;,&#34;8&#34;:&#34;611&#34;,&#34;9&#34;:&#34;112&#34;,&#34;10&#34;:&#34;122&#34;,&#34;11&#34;:&#34;212&#34;,&#34;12&#34;:&#34;121&#34;,&#34;13&#34;:&#34;221&#34;,&#34;14&#34;:&#34;623&#34;,&#34;15&#34;:&#34;123&#34;,&#34;16&#34;:&#34;521&#34;,&#34;17&#34;:&#34;421&#34;,&#34;18&#34;:&#34;622&#34;,&#34;19&#34;:&#34;None&#34;,&#34;20&#34;:&#34;213&#34;,&#34;21&#34;:&#34;312&#34;,&#34;22&#34;:&#34;222&#34;,&#34;23&#34;:&#34;422&#34;,&#34;24&#34;:&#34;512&#34;,&#34;25&#34;:&#34;113&#34;,&#34;26&#34;:&#34;511&#34;,&#34;27&#34;:&#34;313&#34;,&#34;28&#34;:&#34;323&#34;,&#34;29&#34;:&#34;423&#34;,&#34;30&#34;:&#34;314&#34;,&#34;31&#34;:&#34;322&#34;,&#34;32&#34;:&#34;321&#34;,&#34;33&#34;:&#34;522&#34;,&#34;34&#34;:&#34;523&#34;,&#34;35&#34;:&#34;324&#34;,&#34;36&#34;:&#34;759&#34;},&#34;arrest_made&#34;:{&#34;0&#34;:78,&#34;1&#34;:65,&#34;2&#34;:54,&#34;3&#34;:50,&#34;4&#34;:49,&#34;5&#34;:46,&#34;6&#34;:43,&#34;7&#34;:41,&#34;8&#34;:41,&#34;9&#34;:40,&#34;10&#34;:40,&#34;11&#34;:39,&#34;12&#34;:39,&#34;13&#34;:33,&#34;14&#34;:28,&#34;15&#34;:26,&#34;16&#34;:26,&#34;17&#34;:26,&#34;18&#34;:24,&#34;19&#34;:23,&#34;20&#34;:23,&#34;21&#34;:19,&#34;22&#34;:16,&#34;23&#34;:15,&#34;24&#34;:14,&#34;25&#34;:14,&#34;26&#34;:12,&#34;27&#34;:11,&#34;28&#34;:10,&#34;29&#34;:8,&#34;30&#34;:8,&#34;31&#34;:8,&#34;32&#34;:6,&#34;33&#34;:4,&#34;34&#34;:4,&#34;35&#34;:2,&#34;36&#34;:0},&#34;citation_issued&#34;:{&#34;0&#34;:60,&#34;1&#34;:24,&#34;2&#34;:46,&#34;3&#34;:26,&#34;4&#34;:49,&#34;5&#34;:38,&#34;6&#34;:12,&#34;7&#34;:53,&#34;8&#34;:23,&#34;9&#34;:36,&#34;10&#34;:26,&#34;11&#34;:34,&#34;12&#34;:36,&#34;13&#34;:28,&#34;14&#34;:13,&#34;15&#34;:26,&#34;16&#34;:39,&#34;17&#34;:40,&#34;18&#34;:10,&#34;19&#34;:16,&#34;20&#34;:35,&#34;21&#34;:59,&#34;22&#34;:28,&#34;23&#34;:40,&#34;24&#34;:20,&#34;25&#34;:30,&#34;26&#34;:30,&#34;27&#34;:39,&#34;28&#34;:27,&#34;29&#34;:17,&#34;30&#34;:19,&#34;31&#34;:28,&#34;32&#34;:9,&#34;33&#34;:11,&#34;34&#34;:11,&#34;35&#34;:26,&#34;36&#34;:1},&#34;warning_issued&#34;:{&#34;0&#34;:46,&#34;1&#34;:19,&#34;2&#34;:33,&#34;3&#34;:16,&#34;4&#34;:42,&#34;5&#34;:27,&#34;6&#34;:8,&#34;7&#34;:33,&#34;8&#34;:17,&#34;9&#34;:8,&#34;10&#34;:26,&#34;11&#34;:19,&#34;12&#34;:25,&#34;13&#34;:25,&#34;14&#34;:10,&#34;15&#34;:22,&#34;16&#34;:21,&#34;17&#34;:37,&#34;18&#34;:6,&#34;19&#34;:23,&#34;20&#34;:20,&#34;21&#34;:24,&#34;22&#34;:26,&#34;23&#34;:14,&#34;24&#34;:14,&#34;25&#34;:27,&#34;26&#34;:16,&#34;27&#34;:8,&#34;28&#34;:20,&#34;29&#34;:27,&#34;30&#34;:16,&#34;31&#34;:19,&#34;32&#34;:19,&#34;33&#34;:10,&#34;34&#34;:6,&#34;35&#34;:3,&#34;36&#34;:0}}&#39;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">meanData</span> <span class="o">=</span> <span class="n">dataByPrecinct</span><span class="p">[[</span><span class="s1">&#39;arrest_made&#39;</span><span class="p">,</span><span class="s1">&#39;citation_issued&#39;</span><span class="p">,</span><span class="s1">&#39;warning_issued&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -14899,6 +14978,30 @@ dtype: float64
 </div>
 </div>
 
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">popoJson</span> <span class="o">=</span> <span class="n">meanData</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
+<span class="n">popoJson</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
 
     
@@ -14908,7 +15011,7 @@ dtype: float64
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>pandas.core.series.Series</pre>
+<pre>&#39;{&#34;arrest_made&#34;:26.6216216216,&#34;citation_issued&#34;:28.7837837838,&#34;warning_issued&#34;:19.7837837838}&#39;</pre>
 </div>
 
 </div>
@@ -14923,22 +15026,11 @@ dtype: float64
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">popoJson</span> <span class="o">=</span> <span class="n">meanData</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;policeData2.0.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;meanData.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span> 
     <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">popoJson</span><span class="p">)</span> 
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;allData.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span> 
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">complexjson</span><span class="p">)</span> 
 </pre></div>
 
      </div>
@@ -15084,6 +15176,20 @@ dtype: float64
 
 </div>
 
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div>
