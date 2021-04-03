@@ -17,76 +17,187 @@
 		<div class="reveal">
 			<div class="slides">
 
+        <section data-auto-animate>
+          <h2>Making a Reveal.js presentation!</h2>
+           <img src="https://gifimage.net/wp-content/uploads/2018/06/wow-gif-19.gif">
+        </section>
+        
         <section>
-          <h2>Euclidean distance</h2>
-           \[\begin{aligned}
-           d(p,q)=|p-q|
-            \end{aligned} \]
+          <section data-auto-animate>
+            <h3>But first lets start with the CDNs and documentation</h3>
+            <img width = "50px"src="https://gifimage.net/wp-content/uploads/2018/06/wow-gif-19.gif">
+          </section>
+          
+          <section data-auto-animate>
+            <h5>The Proper CDNs can be found:</h5>
+            <h3><a href="http://cdnjs.com/libraries/reveal.js/4.1.0">Here</a></h3>
+          </section>
+
+          <section data-auto-animate>
+            <h5>And the documentation can be found:</h5>
+            <h3><a href="https://revealjs.com">Here</a></h3>
+          </section>
         </section>
 
-      <section>
         <section data-auto-animate>
-          <h1>Code</h1>
-          <div data-id="box" style="height: 500px; background: lightgray;">
-            <pre style="height: 400px; padding-top: 50px;"><code><script type="text/template">
-              
-              <section data-auto-animate>
-                <div data-id="box" style="height: 50px; background: salmon;"></div>
-                <h1>Implicit</h1>
-              </section>
+          <h3>Make sure to paste stylesheets in the head and scripts at the bottom of the body</h3>
+          <img src= "https://thumbs.gfycat.com/GiantImpossibleFalcon-size_restricted.gif">
+          <p style = 'font-size: 10px;'>yes i'm sure</p>
+        </section>
 
-              <section data-auto-animate>
-                <h1>Implicit</h1>
-                <h1 style="color: red;">Animation</h1>
-              </section>
+        <section data-auto-animate>
+          <h2>Next we can get into how to make the slides</h2>
+        </section>
 
-              <section data-auto-animate>
-                <h1>Implicit</h1>
-                <h1>Animation</h1>
-                <h1 style="color: red;">With Code</h1>
-              </section>
+        <section>
+          <section data-auto-animate>
+            <h3>First thing you need to do is call reveal and slides as classes</h3>
+          </section>
+          
+          <section data-auto-animate>
+            <h4>This happens in the body of the html document and looks like this:</h4>
+            <pre><code><script type="text/template">
 
-              <section data-auto-animate>
-                <h1 style="color: yellow">Ready?</h1>
-                <div data-id="box" style="height: 50px; background: salmon;"></div>
-              </section>
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                    </div>
+                  </div>
+                </body>
 
-            </script></code></pre>
-          </div>
+              </script></code></pre>
+          </section>
+
+          <section data-auto-animate>
+            <h4>The reveal class denotes that you'll be using the assets within the cdn</h4>
+            <pre><code data-line-numbers="4"><script type="text/template">
+
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                    </div>
+                  </div>
+                </body>
+
+              </script></code></pre>
+          </section>
+
+          <section data-auto-animate>
+            <h4>And the slides class allows you to begin to set up the presentaion</h4>
+            <pre><code data-line-numbers="5"><script type="text/template">
+
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                    </div>
+                  </div>
+                </body>
+
+              </script></code></pre>
+          </section>
         </section>
 
           <section data-auto-animate>
-                <h3>But what if we want to animate code blocks?</h3>
-                  <pre><code data-line-numbers="2-5|7-10|12-16|18-21"><script type="text/template">
-                    
-                    <section data-auto-animate>
-                      <h1>Implicit</h1>
-                    </section>
+            <h2>Congrats! now we can start making slides!</h2>
+            <img src= "https://thumbs.gfycat.com/CourteousRemarkableArrowcrab-max-1mb.gif">
+          </section>
 
-                    <section data-auto-animate>
-                      <h1>Implicit</h1>
-                      <h1 style="color: red;">Animation</h1>
-                    </section>
-
-                    <section data-auto-animate>
-                      <h1>Implicit</h1>
-                      <h1>Animation</h1>
-                      <h1 style="color: red;">With Code</h1>
-                    </section>
-
-                    <section data-auto-animate>
-                      <h1 style="color: yellow">Ready?</h1>
-                      <div data-id="box" style="height: 50px; background: salmon;"></div>
-                    </section>
-
-                  </script></code></pre>
+          <section>
+            <section data-auto-animate>
+              <h3>The basic structure of a slide looks like this</h3>
             </section>
-        </section>
+            
+            <section data-auto-animate>
+              <h4>Every slide uses the section tag</h4>
+              <pre><code data-line-numbers="6-7"><script type="text/template">
+  
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                      <section>
+                      </section>
+                    </div>
+                  </div>
+                </body>
 
-        <section data-auto-animate>
-          <h1>Event Practice</h1>
+                </script></code></pre>
+            </section>
+  
+            <section data-auto-animate>
+              <h4>Content can then be added to this tag with normal html syntax</h4>
+              <pre><code data-line-numbers="7"><script type="text/template">
+  
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                      <section>
+                        <h1>This is content</h1>
+                      </section>
+                    </div>
+                  </div>
+                </body>
+  
+                </script></code></pre>
+            </section>
+  
+            <section data-auto-animate>
+              <h4>To add another slide, all you need to do is add another section tag</h4>
+              <pre><code data-line-numbers="10-12"><script type="text/template">
+  
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                      <section>
+                        <h1>This is content</h1>
+                      </section>
 
-        </section>
+                      <section>
+                        <h1>This is content</h1>
+                      </section>
+                    </div>
+                  </div>
+                </body>
+  
+                </script></code></pre>
+            </section>
+
+            <section data-auto-animate>
+              <h4>To make the slides vertical, just nest them inside another pair of section tags</h4>
+              <pre><code data-line-numbers="6,15"><script type="text/template">
+  
+                <body>
+                  <div class='reveal'>
+                    <div class='slides'>
+                      <section>
+                        <section>
+                          <h1>This is content</h1>
+                        </section>
+
+                        <section>
+                          <h1>This is content with an image</h1>
+                          <img src= "sourcewebsite">
+                        </section>
+                      </section>
+                    </div>
+                  </div>
+                </body>
+  
+                </script></code></pre>
+            </section>
+          </section>
+
+          <section data-auto-animate>
+            <h2>Nice!</h2>
+            <img src= "https://www.reactiongifs.us/wp-content/uploads/2017/10/TAU-Nice.gif">
+          </section>
+
+          <section data-auto-animate>
+            <h2>There are even more fancy things you can do with reveal.js but now you have the basics!</h2>
+            <img src= "https://media.tenor.com/images/fe8f1107c35579e8910166bea49d1c26/tenor.gif">
+          </section>
+
+
+
 			</div>
 		</div>
 
@@ -105,19 +216,6 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/math/math.min.js" integrity="sha512-FUzQmRJDLL111zqJg/vN1YzQFQtZNWfBH2VaOiv30dXRXgaTRn3F/Ibda92klSAVjfz3Q9UqS88R4RF4Ip01fQ==" crossorigin="anonymous"></script>
-    <script>
-      Reveal.initialize({
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          // pass other options into `MathJax.Hub.Config()`
-          TeX: { Macros: { RR: "{\\bf R}" } }
-        },
-        plugins: [ RevealMath ]
-      });
-    </script>
-
 	</body>
 </html>
 
