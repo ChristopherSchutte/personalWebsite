@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="plantChart"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "axis": {"grid": false}, "title": {"font": "Helvetica", "fontSize": 50}}, "layer": [{"mark": {"type": "circle", "size": 150}, "encoding": {"color": {"condition": {"type": "nominal", "field": "Plant", "legend": null, "scale": {"range": ["#3F5426", "#4E682F", "#5C7B37", "#6B8E40", "#79A148", "#87B253"]}, "selection": "selector001"}, "value": "lightgray"}, "tooltip": {"type": "nominal", "field": "Plant"}, "x": {"type": "quantitative", "axis": {"labels": false, "title": "Sun Requirements", "titleFontSize": 35}, "field": "Sun", "scale": {"domain": [5, 30]}}, "y": {"type": "quantitative", "axis": {"labels": false, "title": "Water Requirements", "titleFontSize": 35}, "field": "Water", "scale": {"domain": [1.5, 7]}}}, "selection": {"selector001": {"type": "single"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 20, "dy": 20, "fontSize": 20}, "encoding": {"color": {"condition": {"type": "nominal", "field": "Plant", "legend": null, "scale": {"range": ["#3F5426", "#4E682F", "#5C7B37", "#6B8E40", "#79A148", "#87B253"]}, "selection": "selector001"}, "value": "lightgray"}, "text": {"type": "nominal", "field": "Plant"}, "tooltip": {"type": "nominal", "field": "Plant"}, "x": {"type": "quantitative", "axis": {"labels": false, "title": "Sun Requirements", "titleFontSize": 35}, "field": "Sun", "scale": {"domain": [5, 30]}}, "y": {"type": "quantitative", "axis": {"labels": false, "title": "Water Requirements", "titleFontSize": 35}, "field": "Water", "scale": {"domain": [1.5, 7]}}}}], "data": {"name": "data-8f7833d950185acb61af18d72fdf1722"}, "height": 800, "title": "Water Needs vs. Sun Requirements", "width": 1300, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-8f7833d950185acb61af18d72fdf1722": [{"Plant": "Snake Plant", "Sun": 16.0, "Water": 4, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Dumbcane", "Sun": 23.0, "Water": 4, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Monstera/Spider Plant", "Sun": 23.0, "Water": 5, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Pothos", "Sun": 19.5, "Water": 5, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Jade Plant/Money Tree", "Sun": 12.5, "Water": 6, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Aloe", "Sun": 5.5, "Water": 6, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Kalanchoe", "Sun": 9.0, "Water": 5, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Bamboo", "Sun": 27.5, "Water": 4, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Peace Lily", "Sun": 25.0, "Water": 2, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}, {"Plant": "Peperomia", "Sun": 23.0, "Water": 2, "Icon": "https://milwaukeelawnsprinkler.com/wp-content/uploads/2014/02/plant-icon.png"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('plantChart');
+      vegaEmbed("#plantChart", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
